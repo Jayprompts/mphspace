@@ -19,6 +19,12 @@ const tools = [
     status: 'live',
   },
   {
+    name: 'Grove Chat',
+    description: 'Real-time chat with communities and blogs built in — connect, discuss, and share in one place.',
+    url: 'https://chat.mypromptspace.cloud',
+    status: 'live',
+  },
+  {
     name: 'More tools coming soon',
     description: 'This space grows as new tools ship under MPH Space.',
     url: null,
