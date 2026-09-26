@@ -188,3 +188,123 @@ a.tool-card:hover {
 .footer-links a { transition: color 0.2s; }
 .footer-links a:hover { color: var(--foreground); }
 .footer-sep { margin: 0 0.5rem; opacity: 0.5; }
+
+/* founder mention — deliberately subtle, sits between the catalogue and footer */
+.founder-mention {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 1.5rem 2rem;
+}
+.founder-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.founder-trigger:hover { color: var(--foreground); }
+
+/* founder modal */
+.founder-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(3, 3, 5, 0.75);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.founder-modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.founder-modal {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  transform: scale(0.96) translateY(8px);
+  transition: transform 0.2s;
+}
+.founder-modal-backdrop.is-open .founder-modal {
+  transform: scale(1) translateY(0);
+}
+
+.founder-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.founder-modal-close:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--foreground);
+}
+
+.founder-photo {
+  width: 6.5rem;
+  height: 6.5rem;
+  margin: 0 auto 1.25rem;
+  background: linear-gradient(135deg, var(--surface-2), #22222c);
+  animation: founderMorph 8s ease-in-out infinite;
+}
+@keyframes founderMorph {
+  0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%  { border-radius: 55% 45% 30% 55% / 30% 45% 70% 40%; }
+  75%  { border-radius: 40% 60% 50% 40% / 60% 40% 60% 50%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+.founder-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.15rem;
+}
+.founder-title {
+  font-size: 0.8125rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem;
+}
+.founder-bio {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+.founder-cta {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: opacity 0.2s;
+}
+.founder-cta:hover { opacity: 0.8; }

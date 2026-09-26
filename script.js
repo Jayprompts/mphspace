@@ -1,5 +1,30 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Founder modal
+const founderTrigger = document.getElementById('founderTrigger');
+const founderModalBackdrop = document.getElementById('founderModalBackdrop');
+const founderModalClose = document.getElementById('founderModalClose');
+
+if (founderTrigger && founderModalBackdrop && founderModalClose) {
+  const openFounderModal = () => {
+    founderModalBackdrop.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeFounderModal = () => {
+    founderModalBackdrop.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
+
+  founderTrigger.addEventListener('click', openFounderModal);
+  founderModalClose.addEventListener('click', closeFounderModal);
+  founderModalBackdrop.addEventListener('click', (e) => {
+    if (e.target === founderModalBackdrop) closeFounderModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeFounderModal();
+  });
+}
+
 // Mouse-tracking spotlight (matches the aesthetic used across MPH Space properties)
 const fx1 = document.getElementById('bgFx1');
 const fx2 = document.getElementById('bgFx2');
@@ -10,7 +35,7 @@ window.addEventListener('mousemove', (e) => {
   fx2.style.background = `radial-gradient(300px at ${x}px ${y}px, rgba(139,92,246,0.1), transparent 50%)`;
 });
 
-// Tool catalogue — add a new object here whenever a new MPH Space tool ships
+// Product catalogue — add a new object here whenever a new MPH Space product ships
 const tools = [
   {
     name: 'MPH Form Relay',
@@ -27,8 +52,8 @@ const tools = [
     status: 'live',
   },
   {
-    name: 'More tools coming soon',
-    description: 'This space grows as new tools ship under MPH Space.',
+    name: 'More products coming soon',
+    description: 'This space grows as new products ship under MPH Space.',
     url: null,
     icon: null,
     status: 'soon',
@@ -37,6 +62,8 @@ const tools = [
 
 const grid = document.getElementById('catalogueGrid');
 
+// Guard so this doesn't throw on pages without a catalogue (e.g. founder.html)
+if (grid) {
 tools.forEach((tool) => {
   const isLive = tool.status === 'live';
   const card = document.createElement(isLive ? 'a' : 'div');
@@ -62,3 +89,4 @@ tools.forEach((tool) => {
 
   grid.appendChild(card);
 });
+}
