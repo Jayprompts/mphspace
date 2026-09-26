@@ -16,18 +16,21 @@ const tools = [
     name: 'MPH Form Relay',
     description: 'Self-hosted contact-form relay. Paste one snippet into any static site, get every submission straight to your inbox — no vendor lock-in.',
     url: 'https://formrelay.mypromptspace.cloud',
+    icon: 'images/icon-formrelay.png',
     status: 'live',
   },
   {
     name: 'Grove Chat',
     description: 'Real-time chat with communities and blogs built in — connect, discuss, and share in one place.',
     url: 'https://chat.mypromptspace.cloud',
+    icon: 'images/icon-grovechat.png',
     status: 'live',
   },
   {
     name: 'More tools coming soon',
     description: 'This space grows as new tools ship under MPH Space.',
     url: null,
+    icon: null,
     status: 'soon',
   },
 ];
@@ -47,7 +50,10 @@ tools.forEach((tool) => {
 
   card.innerHTML = `
     <div class="tool-card-top">
-      <h3 class="tool-name">${tool.name}</h3>
+      <div class="tool-identity">
+        ${tool.icon ? `<img src="${tool.icon}" alt="" class="tool-icon" />` : ''}
+        <h3 class="tool-name">${tool.name}</h3>
+      </div>
       <span class="tool-status ${isLive ? 'status-live' : 'status-soon'}">${isLive ? 'Live' : 'Soon'}</span>
     </div>
     <p class="tool-desc">${tool.description}</p>

@@ -122,10 +122,26 @@ a.tool-card:hover {
   gap: 0.75rem;
   margin-bottom: 0.5rem;
 }
+.tool-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-width: 0;
+}
+.tool-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: block;
+}
 .tool-name {
   font-size: 1.0625rem;
   font-weight: 600;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .tool-status {
   flex-shrink: 0;
